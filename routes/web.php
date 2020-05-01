@@ -26,6 +26,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('tags', 'TagController', ['except' => ['create']]);
 
     Route::post('comments/{post_id}', 'CommentController@store')->name('comments.store');
+    Route::get('comments/{id}/edit', 'CommentController@edit')->name('comments.edit');
+    Route::put('comments/{id}', 'CommentController@update')->name('comments.update');
+    Route::get('comments/{id}', 'CommentController@delete')->name('comments.delete');
+    Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
 });
 
 Auth::routes();
