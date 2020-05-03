@@ -17,7 +17,8 @@
 
         <div class="post">
             <h3>{{ $post->title }}</h3>
-            <p>{{$post->body}}</p>
+            <img src="{{ asset('images/' . $post->image) }}" height="400" alt="">
+            <p>{!! $post->body !!}</p>
             <a href="{{ route('blog.single', $post->slug) }}" class="btn btn-primary">Read more</a>
         </div>
         <hr/>

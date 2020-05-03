@@ -5,6 +5,13 @@
 @section('stylesheets')
 
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css" >
+    <script src="https://cdn.tiny.cloud/1/os2uhbzt74zw845ntaxgqjtdqy8gobj9a8esilemunvn4bma/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            plugins: 'link code',
+        });
+    </script>
 
 @endsection
 @section('content')
@@ -13,7 +20,7 @@
         <div class="col-md-8 con-md-offset-2">
             <h1>Create New Post</h1>
             <hr>
-            {!! Form::open(['route' => 'posts.store', 'validate']) !!}
+            {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
 
             {{ Form::label('title', 'Title:')}}
             {{ Form::text('title', null, array('class' => 'form-control', 'required' => ''))}}
@@ -37,8 +44,11 @@
                 @endforeach
             </select>
 
+            {!! Form::label('featured_image', 'Upload Featured Image') !!}
+            {!! Form::file('featured_image') !!}
+            <br>
             {{ Form::label('body', 'Post Body:', ['class' => 'control-label']) }}
-            {{ Form::textarea('body', '', array('class' => 'form-control', 'required' => '', 'minlength' => 5, 'maxlength' => 255)) }}
+            {{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
             {{ Form::submit('Create Post', array('class' => 'btn btn-success', 'style' => 'margin-top: 20px; margin-bottom: 20px;') )}}
             {!! Form::close() !!}

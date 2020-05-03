@@ -5,8 +5,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 offset-md-2">
+            <img src="{{ asset('images/' . $post->image) }}" height="400" alt="">
             <h3>{{ $post->title }}</h3>
-            <p>{{ $post->body }}</p>
+            <p>{!! $post->body !!} </p>
             <hr>
             <p>Posted In: {{ $post->category['name'] }}</p>
         </div>

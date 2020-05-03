@@ -7,8 +7,9 @@
     <div class="row">
         <div class="col-md-8">
             <h1>{{ $post->title }}</h1>
-            <p class="lead">{{ $post->body }}</p>
-
+            <img src="{{ asset('images/' . $post->image) }}" alt="">
+            <p class="lead">{!! $post->body !!} </p>
+            
             <div class="tags">
                 <p>Tags: </p>
                 @foreach($post->tags as $tag)
